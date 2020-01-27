@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./build/bundle.js",
-    "build": "webpack --config webpack.server.js"
+    "build": "webpack --config webpack.server.js",
+    "docs": "docsify serve ./docs"
   },
   "keywords": [
     "React",
