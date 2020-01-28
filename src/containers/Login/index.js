@@ -1,5 +1,11 @@
 import React from 'react'
+import Header from '../../components/Header'
 
-const Login = () => <h1>Here is Login component!</h1>
+const Login = () => (
+  <div>
+    <Header />
+    <h1>Here is Login component!</h1>
+  </div>
+)
 
 export default Login

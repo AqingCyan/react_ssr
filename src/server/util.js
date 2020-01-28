@@ -1,6 +1,6 @@
 import React from 'react'
-import { StaticRouter } from 'react-router-dom'
 import ReactDomServer from 'react-dom/server'
+import { StaticRouter } from 'react-router-dom'
 import Routes from '../Routes'
 
 const { renderToString } = ReactDomServer
@@ -16,6 +16,12 @@ export const render = (req) => {
       <head>
         <link rel="icon" href="/favicon.ico"/>
         <title>React SSR</title>
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+          }
+        </style>
       </head>
         <body>
            <div id="root">${content}</div>
