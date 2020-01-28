@@ -1,19 +1,25 @@
 import Express from 'express'
 import React from 'react'
 import ReactDomServer from 'react-dom/server'
-import Home from '../containers/Home'
+import { StaticRouter } from 'react-router-dom'
+import Routes from '../Routes'
 
 const app = Express()
 app.use(Express.static('public'))
 
 const { renderToString } = ReactDomServer
-const content = renderToString(<Home />)
 
-app.get('/', (req, res) => res.send(
-  `
+app.get('/', (req, res) => {
+  const content = renderToString((
+    <StaticRouter location={req.path}>
+      {Routes}
+    </StaticRouter>
+  ))
+
+  res.send(`
     <html>
       <head>
-        <link rel="icon" href="https://zh-hans.reactjs.org/favicon.ico"/>
+        <link rel="icon" href="/favicon.ico"/>
         <title>React SSR</title>
       </head>
         <body>
@@ -21,7 +27,7 @@ app.get('/', (req, res) => res.send(
            <script src="index.js"></script>
         </body>
     </html>
-  `,
-))
+  `)
+})
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
