@@ -7,6 +7,8 @@ const reducer = combineReducers({
 })
 
 // 避免所有render公用一个store
-const getStore = () => createStore(reducer, applyMiddleware(thunk))
-
-export default getStore
+export const getStore = () => createStore(reducer, applyMiddleware(thunk))
+export const getClientStore = () => {
+  const defaultState = window.context.state
+  return createStore(reducer, defaultState, applyMiddleware(thunk))
+}

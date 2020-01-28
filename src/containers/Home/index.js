@@ -6,7 +6,10 @@ import { getHomeList } from './store/actions'
 class Home extends PureComponent {
   componentDidMount() {
     const { gethomelist } = this.props
-    gethomelist()
+    const { list } = this.props
+    if (!list.length) {
+      gethomelist()
+    }
   }
 
   getList() {
