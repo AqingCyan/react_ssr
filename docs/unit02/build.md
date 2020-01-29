@@ -22,10 +22,10 @@ app.listen(10086, () => console.log('Example app listening on port 10086!'))
 ```jsx harmony
 const React = require('react')
 
-const Home = () => <h1>Hello React SSR</h1>
+const App = () => <h1>Hello React SSR</h1>
 
 module.exports = {
-  default: Home
+  default: App
 }
 ```
 
