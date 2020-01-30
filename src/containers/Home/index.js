@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { getHomeList } from './store/actions'
+import getHomeList from './store/actions'
 
 class Home extends PureComponent {
   componentDidMount() {
@@ -13,14 +13,37 @@ class Home extends PureComponent {
 
   getList() {
     const { list } = this.props
-    return list.map(({ id, title }) => <p key={id}>· {title}</p>)
+    return list.map(({ id, title }, index) => (
+      <p
+        key={id}
+        style={{ fontSize: '20px', margin: '10px 5px', color: '#333' }}
+      >
+        {index + 1} {title}
+      </p>
+    ))
   }
 
   render() {
     return (
       <div>
         {this.getList()}
-        <button type="button" onClick={() => alert('click this')}>Click me!</button>
+        <button
+          type="button"
+          onClick={() => alert('click this')}
+          style={{
+            margin: '10px 5px',
+            width: '100px',
+            height: '45px',
+            border: 0,
+            fontSize: '15px',
+            borderRadius: '5px',
+            backgroundColor: '#2d80f7',
+            color: '#fff',
+            outline: 'none',
+          }}
+        >
+          Click me!
+        </button>
       </div>
     )
   }

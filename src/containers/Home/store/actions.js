@@ -5,10 +5,12 @@ const changeList = (list) => ({
   list,
 })
 
-export const getHomeList = () => (dispatch, getState, axiosInstance) => (
+const getHomeList = () => (dispatch, getState, axiosInstance) => (
   axiosInstance.get('/api/news.json?secret=PP87ANTIPIRATE')
     .then((res) => {
       const list = res.data.data
       dispatch(changeList(list))
     })
 )
+
+export default getHomeList
