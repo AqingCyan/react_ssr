@@ -8,7 +8,7 @@ class Home extends PureComponent {
     const { gethomelist } = this.props
     const { list } = this.props
     if (!list.length) {
-      gethomelist()
+      gethomelist(false)
     }
   }
 
@@ -29,7 +29,7 @@ class Home extends PureComponent {
 }
 
 // 负责在服务器端渲染之前，将该路由需要的数据提前加载好
-Home.loadData = (store) => store.dispatch(getHomeList())
+Home.loadData = (store) => store.dispatch(getHomeList(true))
 
 const mapStateToProps = (state) => ({
   list: state.home.newsList,

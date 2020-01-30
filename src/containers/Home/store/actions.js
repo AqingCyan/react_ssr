@@ -6,9 +6,14 @@ const changeList = (list) => ({
   list,
 })
 
-export const getHomeList = () => (dispatch) => {
-  // 'http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE'
-  return axios.get('/api/news.json?secret=PP87ANTIPIRATE')
+export const getHomeList = (server) => (dispatch) => {
+  let url = ''
+  if (server) {
+    url = 'http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE'
+  } else {
+    url = '/api/news.json?secret=PP87ANTIPIRATE'
+  }
+  return axios.get(url)
     .then((res) => {
       const list = res.data.data
       dispatch(changeList(list))
