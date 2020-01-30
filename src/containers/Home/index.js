@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import Header from '../../components/Header'
 import { getHomeList } from './store/actions'
 
 class Home extends PureComponent {
@@ -20,7 +19,6 @@ class Home extends PureComponent {
   render() {
     return (
       <div>
-        <Header />
         {this.getList()}
         <button type="button" onClick={() => alert('click this')}>Click me!</button>
       </div>
