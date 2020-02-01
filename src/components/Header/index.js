@@ -2,16 +2,10 @@ import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { actions } from './store'
+import withStyle from '../../withStyle'
 import s from './style.css'
 
 class Header extends PureComponent {
-  componentWillMount() {
-    const { staticContext } = this.props
-    if (staticContext) {
-      staticContext.css.push(s._getCss())
-    }
-  }
-
   render() {
     const { login, handleLogin, handleLogout } = this.props
     return (
@@ -54,4 +48,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(withStyle(Header, s))

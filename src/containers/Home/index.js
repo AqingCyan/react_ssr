@@ -1,16 +1,10 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import getHomeList from './store/actions'
+import withStyle from '../../withStyle'
 import s from './style.css'
 
 class Home extends PureComponent {
-  componentWillMount() {
-    const { staticContext } = this.props
-    if (staticContext) {
-      staticContext.css.push(s._getCss())
-    }
-  }
-
   componentDidMount() {
     const { gethomelist } = this.props
     const { list } = this.props
@@ -47,9 +41,6 @@ class Home extends PureComponent {
   }
 }
 
-// 负责在服务器端渲染之前，将该路由需要的数据提前加载好
-Home.loadData = (store) => (store.dispatch(getHomeList()))
-
 const mapStateToProps = (state) => ({
   list: state.home.newsList,
 })
@@ -60,4 +51,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(withStyle(Home, s))
+
+// 负责在服务器端渲染之前，将该路由需要的数据提前加载好
+ExportHome.loadData = (store) => (store.dispatch(getHomeList()))
+
+export default ExportHome

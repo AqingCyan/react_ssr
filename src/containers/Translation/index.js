@@ -29,8 +29,6 @@ class Translation extends PureComponent {
   }
 }
 
-Translation.loadData = (store) => (store.dispatch(getTranslationList()))
-
 const mapStateToProps = (state) => ({
   list: state.translation.translationList,
   login: state.header.login,
@@ -42,4 +40,8 @@ const mapDispatchToProps = (dispatch) => ({
   },
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Translation)
+const ExportTranslation = connect(mapStateToProps, mapDispatchToProps)(Translation)
+
+ExportTranslation.loadData = (store) => (store.dispatch(getTranslationList()))
+
+export default ExportTranslation
