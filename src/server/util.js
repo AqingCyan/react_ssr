@@ -16,6 +16,9 @@ export default (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   ))
+
+  const cssStr = context.css ? context.css : ''
+
   return (`
     <html lang="zh-CN">
       <head>
@@ -27,6 +30,7 @@ export default (store, routes, req, context) => {
             padding: 0;
           }
         </style>
+        <style>${cssStr}</style>
       </head>
       <body>
          <div id="root">${content}</div>

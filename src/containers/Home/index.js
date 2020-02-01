@@ -4,6 +4,13 @@ import getHomeList from './store/actions'
 import s from './style.css'
 
 class Home extends PureComponent {
+  componentWillMount() {
+    const { staticContext } = this.props
+    if (staticContext) {
+      staticContext.css = s._getCss()
+    }
+  }
+
   componentDidMount() {
     const { gethomelist } = this.props
     const { list } = this.props

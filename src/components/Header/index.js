@@ -5,6 +5,15 @@ import { actions } from './store'
 import s from './style.css'
 
 class Header extends PureComponent {
+  componentWillMount() {
+    const { staticContext } = this.props
+    console.log(this.props)
+    if (staticContext) {
+      console.log(s._getCss())
+      staticContext.css = s._getCss()
+    }
+  }
+
   render() {
     const { login, handleLogin, handleLogout } = this.props
     return (
